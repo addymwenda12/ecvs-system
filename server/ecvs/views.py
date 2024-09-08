@@ -3,6 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Credential
 from .serializers import CredentialSerializer
+from django_ratelimit.decorators import ratelimit
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
     queryset = Credential.objects.all()
     serializer_class = CredentialSerializer
 
+    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def create(self, request, *args, **kwargs):
         """
         Create a new credential.
@@ -27,6 +29,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def list(self, request, *args, **kwargs):
         """
         List all credentials.
@@ -37,6 +40,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def retrieve(self, request, *args, **kwargs):
         """
         Retrieve a credential by ID.
@@ -49,6 +53,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def update(self, request, *args, **kwargs):
         """
         Update a credential by ID.
@@ -61,6 +66,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def destroy(self, request, *args, **kwargs):
         """
         Delete a credential by ID.
