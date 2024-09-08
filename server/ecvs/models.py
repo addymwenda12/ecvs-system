@@ -17,5 +17,9 @@ class Credential(models.Model):
         return f"{self.degree} from {self.institution} ({self.date_issued})"
 
     def verify(self):
-        # Logic to verify the credential (query blockchain)
-        return True  # Simulate verification success
+        # Simulate verification logic
+        # Querying blockchain
+        if self.credential_id.startswith("123"):
+            return True
+        else:
+            return False
