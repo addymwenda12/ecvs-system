@@ -3,6 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Credential
 from .serializers import CredentialSerializer
+from django.utils.decorators import method_decorator
 from django_ratelimit.decorators import ratelimit
 
 logger = logging.getLogger(__name__)
@@ -18,29 +19,37 @@ class CredentialViewSet(viewsets.ModelViewSet):
     queryset = Credential.objects.all()
     serializer_class = CredentialSerializer
 
-    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
+    @method_decorator(ratelimit(key='ip', rate='10/m', method=ratelimit.ALL))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
     def create(self, request, *args, **kwargs):
         """
         Create a new credential.
         """
         try:
             logger.info(f"Creating credential: {request.data}")
-            return super().create(request, *args, **kwargs)
+            serializer = self.get_serializer(data=request.data)
+            if serializer.is_valid():
+                self.perform_create(serializer)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                logger.error(f"Validation error: {serializer.errors}")
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
+            logger.error(f"Error creating credential: {str(e)}")
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def list(self, request, *args, **kwargs):
         """
         List all credentials.
         """
         try:
-            logger.info(f"Listing credentials")
+            logger.info("Listing credentials")
             return super().list(request, *args, **kwargs)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def retrieve(self, request, *args, **kwargs):
         """
         Retrieve a credential by ID.
@@ -53,7 +62,6 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def update(self, request, *args, **kwargs):
         """
         Update a credential by ID.
@@ -66,7 +74,6 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @ratelimit(key='ip', rate='10/m', method=ratelimit.ALL)
     def destroy(self, request, *args, **kwargs):
         """
         Delete a credential by ID.
