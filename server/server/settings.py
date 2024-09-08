@@ -86,8 +86,6 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
-AUTH_USER_MODEL = 'ecvs.User'
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -126,6 +124,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -163,3 +162,5 @@ LOGGING = {
         },
     },
 }
+
+AUTH_USER_MODEL = 'ecvs.User'
