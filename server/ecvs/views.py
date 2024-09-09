@@ -2,6 +2,8 @@ import logging
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from .models import Credential
 from .serializers import CredentialSerializer
 
@@ -18,52 +20,57 @@ class CredentialViewSet(viewsets.ModelViewSet):
     queryset = Credential.objects.all()
     serializer_class = CredentialSerializer
 
-    @action(detail=True, methods=['post'])
-    def verify(self, request, pk=None):
+    def create(self, request, *args, **kwargs):
         """
-        Verify the credential.
+        Create a new credential.
         """
-        credential = self.get_object()
-        is_verified = credential.verify()
-        return Response({'is_verified': is_verified})
-
-    def perform_create(self, serializer):
-        """
-        Perform the create action.
-        """
-        serializer.save()
-
-    def list(self, request, *args, **kwargs):
-        """
-        List all credentials.
-        """
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
-
-    def retrieve(self, request, *args, **kwargs):
-        """
-        Retrieve a credential.
-        """
-        instance = self.get_object()
-        serializer = self.get_serializer(instance)
-        return Response(serializer.data)
+        try:
+            return super().create(request, *args, **kwargs)
+        except ValidationError as e:
+            logger.error(f"Validation error: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except IntegrityError as e:
+            logger.error(f"Integrity error: {str(e)}")
+            return Response({"error": "A credential with this ID already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logger.error(f"Unexpected error: {str(e)}")
+            return Response({"error": "An unexpected error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def update(self, request, *args, **kwargs):
         """
         Update a credential.
         """
-        partial = kwargs.pop('partial', False)
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=partial)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        return Response(serializer.data)
+        try:
+            return super().update(request, *args, **kwargs)
+        except ValidationError as e:
+            logger.error(f"Validation error: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except IntegrityError as e:
+            logger.error(f"Integrity error: {str(e)}")
+            return Response({"error": "A credential with this ID already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logger.error(f"Unexpected error: {str(e)}")
+            return Response({"error": "An unexpected error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @action(detail=True, methods=['post'])
+    def verify(self, request, pk=None):
+        """
+        Verify a credential.
+        """
+        try:
+            credential = self.get_object()
+            is_verified = credential.verify()
+            return Response({'is_verified': is_verified})
+        except Exception as e:
+            logger.error(f"Error verifying credential: {str(e)}")
+            return Response({"error": "An error occurred while verifying the credential."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def destroy(self, request, *args, **kwargs):
         """
-        Destroy a credential.
+        Delete a credential
         """
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            return super().destroy(request, *args, **kwargs)
+        except Exception as e:
+            logger.error(f"Error deleting credential: {str(e)}")
+            return Response({"error": "An error occurred while deleting the credential."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

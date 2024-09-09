@@ -167,3 +167,24 @@ INFO 2024-09-09 13:38:12,524 autoreload C:\Users\HP\Documents\myProjects\ethSafa
 INFO 2024-09-09 13:38:14,670 autoreload Watching for file changes with StatReloader
 INFO 2024-09-09 13:38:27,109 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
 INFO 2024-09-09 13:38:29,893 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:39:24,218 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:39:26,636 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:39:46,310 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:39:47,918 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:39:57,425 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:39:59,051 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:40:05,014 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:40:07,782 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:40:26,118 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:40:29,238 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:40:48,733 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:40:51,645 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:41:15,863 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:41:20,747 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:41:51,718 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:41:54,561 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:42:02,164 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:42:04,068 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:42:09,719 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:42:13,799 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:42:24,840 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
