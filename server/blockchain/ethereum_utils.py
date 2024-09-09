@@ -10,14 +10,16 @@ load_dotenv()
 w3 = Web3(Web3.HTTPProvider(os.getenv('ETHEREUM_NODE_URL')))
 
 # Check if the connection is successful
-if not w3.isConnected():
+if not w3.is_connected():
     raise Exception("Failed to connect to the Ethereum network")
 
 # Get the chain ID
-chain_id = w3.eth.chainId
+chain_id = w3.eth.chain_id
 
 # Load contract ABI and address
-with open('server/blockchain/CredentialContract.json') as f:
+current_dir = os.path.dirname(os.path.abspath(__file__))
+contract_path = os.path.join(current_dir, '..', 'build', 'contracts', 'CredentialContract.json')
+with open(contract_path) as f:
     contract_json = json.load(f)
 contract_abi = contract_json['abi']
 contract_address = os.getenv('CONTRACT_ADDRESS')
