@@ -326,3 +326,4 @@ WARNING 2024-09-09 15:03:30,804 log Bad Request: /api/credentials/
 ERROR 2024-09-09 15:03:35,690 views Validation error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
 WARNING 2024-09-09 15:03:35,691 log Bad Request: /api/credentials/1/
 WARNING 2024-09-09 15:03:37,719 log Not Found: /api/credentials/999/verify/
+INFO 2024-09-09 15:40:41,651 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\win32\lib\pywin32_bootstrap.py changed, reloading.

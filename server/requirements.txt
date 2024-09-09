@@ -1,0 +1,6 @@
+Django
+djangorestframework
+python-dotenv
+web3
+django-filter
+# google-generativeai
