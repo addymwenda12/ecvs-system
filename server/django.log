@@ -188,3 +188,141 @@ INFO 2024-09-09 13:42:04,068 autoreload Watching for file changes with StatReloa
 INFO 2024-09-09 13:42:09,719 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
 INFO 2024-09-09 13:42:13,799 autoreload Watching for file changes with StatReloader
 INFO 2024-09-09 13:42:24,840 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 13:42:34,337 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-09 14:58:08,356 views Unexpected error: table ecvs_credential has no column named is_verified
+ERROR 2024-09-09 14:58:08,359 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:09,404 views Unexpected error: table ecvs_credential has no column named is_verified
+ERROR 2024-09-09 14:58:09,405 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:09,408 views Unexpected error: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.
+ERROR 2024-09-09 14:58:09,409 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:10,753 views Unexpected error: {'date_issued': [ErrorDetail(string='Date issued cannot be in the future.', code='invalid')]}
+ERROR 2024-09-09 14:58:10,755 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:12,165 views Unexpected error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+ERROR 2024-09-09 14:58:12,167 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:13,459 views Unexpected error: {'institution': [ErrorDetail(string='Institution must be at least 2 characters long.', code='invalid')]}
+ERROR 2024-09-09 14:58:13,460 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:14,586 views Unexpected error: table ecvs_credential has no column named is_verified
+ERROR 2024-09-09 14:58:14,594 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:14,596 views Error deleting credential: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.
+ERROR 2024-09-09 14:58:14,598 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-09 14:58:15,788 log Internal Server Error: /api/credentials/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: ecvs_credential.is_verified
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: ecvs_credential.is_verified
+ERROR 2024-09-09 14:58:16,890 views Unexpected error: table ecvs_credential has no column named is_verified
+ERROR 2024-09-09 14:58:16,910 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:16,912 views Unexpected error: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.
+ERROR 2024-09-09 14:58:16,914 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-09 14:58:18,092 views Unexpected error: table ecvs_credential has no column named is_verified
+ERROR 2024-09-09 14:58:18,092 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:18,094 views Unexpected error: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.
+ERROR 2024-09-09 14:58:18,095 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-09 14:58:19,159 views Unexpected error: table ecvs_credential has no column named is_verified
+ERROR 2024-09-09 14:58:19,160 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 14:58:19,162 views Error verifying credential: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.
+ERROR 2024-09-09 14:58:19,163 log Internal Server Error: /api/credentials/1/verify/
+ERROR 2024-09-09 14:58:20,478 views Error verifying credential: no such column: ecvs_credential.is_verified
+ERROR 2024-09-09 14:58:20,479 log Internal Server Error: /api/credentials/999/verify/
+ERROR 2024-09-09 15:00:33,337 views Unexpected error: {'credential_id': [ErrorDetail(string='credential with this credential id already exists.', code='unique')]}
+ERROR 2024-09-09 15:00:33,338 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 15:00:34,484 views Unexpected error: {'date_issued': [ErrorDetail(string='Date issued cannot be in the future.', code='invalid')]}
+ERROR 2024-09-09 15:00:34,485 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 15:00:35,653 views Unexpected error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+ERROR 2024-09-09 15:00:35,654 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 15:00:36,684 views Unexpected error: {'institution': [ErrorDetail(string='Institution must be at least 2 characters long.', code='invalid')]}
+ERROR 2024-09-09 15:00:36,685 log Internal Server Error: /api/credentials/
+ERROR 2024-09-09 15:00:41,304 views Unexpected error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+ERROR 2024-09-09 15:00:41,305 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-09 15:00:43,338 views Error verifying credential: No Credential matches the given query.
+ERROR 2024-09-09 15:00:43,338 log Internal Server Error: /api/credentials/999/verify/
+INFO 2024-09-09 15:02:22,063 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 15:02:23,688 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 15:02:34,929 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 15:02:37,169 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 15:02:40,346 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 15:02:41,575 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 15:02:55,840 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 15:02:57,287 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 15:03:10,476 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-09 15:03:11,931 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-09 15:03:27,415 views Validation error: {'credential_id': [ErrorDetail(string='credential with this credential id already exists.', code='unique')]}
+WARNING 2024-09-09 15:03:27,415 log Bad Request: /api/credentials/
+ERROR 2024-09-09 15:03:28,436 views Validation error: {'date_issued': [ErrorDetail(string='Date issued cannot be in the future.', code='invalid')]}
+WARNING 2024-09-09 15:03:28,437 log Bad Request: /api/credentials/
+ERROR 2024-09-09 15:03:29,576 views Validation error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-09 15:03:29,580 log Bad Request: /api/credentials/
+ERROR 2024-09-09 15:03:30,803 views Validation error: {'institution': [ErrorDetail(string='Institution must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-09 15:03:30,804 log Bad Request: /api/credentials/
+ERROR 2024-09-09 15:03:35,690 views Validation error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-09 15:03:35,691 log Bad Request: /api/credentials/1/
+WARNING 2024-09-09 15:03:37,719 log Not Found: /api/credentials/999/verify/
