@@ -49,7 +49,14 @@ def verify_credential(credential_id):
     """
     Verify a credential on the blockchain
     """
-    return credential_contract.functions.verifyCredential(credential_id).call()
+    try:
+        print(f"Attempting to verify credential with ID: {credential_id}")
+        result = credential_contract.functions.verifyCredential(credential_id).call()
+        print(f"Verification result for credential {credential_id}: {result}")
+        return result
+    except Exception as e:
+        print(f"Error verifying credential {credential_id}: {str(e)}")
+        return False
 
 def get_contract():
     """

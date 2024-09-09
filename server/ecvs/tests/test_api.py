@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
-from .models import Credential, User
+from ..models import Credential, User
 from django.utils import timezone
 from unittest.mock import patch
 
@@ -101,22 +101,23 @@ class CredentialAPITest(TestCase):
         response = self.client.delete('/api/credentials/1/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    @patch('server.blockchain.ethereum_utils.verify_credential')
-    def test_verify_credential(self, mock_verify):
+    @patch('blockchain.ethereum_utils.credential_contract.functions.verifyCredential')
+    def test_verify_credential(self, mock_verify_function):
         """
         Test the verification of a credential.
         """
-        mock_verify.return_value = True
+        mock_verify_function.return_value.call.return_value = True
         self.client.post('/api/credentials/', self.credential_data, format='json')
         response = self.client.post('/api/credentials/1/verify/')
+        print(f"Test verification response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.data['is_verified'])
 
-    @patch('server.blockchain.ethereum_utils.verify_credential')
-    def test_verify_nonexistent_credential(self, mock_verify):
+    @patch('blockchain.ethereum_utils.credential_contract.functions.verifyCredential')
+    def test_verify_nonexistent_credential(self, mock_verify_function):
         """
         Test the verification of a nonexistent credential.
         """
-        mock_verify.return_value = False
+        mock_verify_function.return_value.call.return_value = False
         response = self.client.post('/api/credentials/999/verify/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

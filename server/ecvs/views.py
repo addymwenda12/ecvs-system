@@ -68,9 +68,12 @@ class CredentialViewSet(viewsets.ModelViewSet):
         """
         try:
             credential = self.get_object()
+            logger.info(f"Verifying credential with ID: {credential.credential_id}")
             is_verified = credential.verify()
+            logger.info(f"Credential {credential.credential_id} verification result: {is_verified}")
             return Response({'is_verified': is_verified})
         except Http404:
+            logger.warning(f"Credential with ID {pk} not found")
             return Response({"error": "Credential not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             logger.error(f"Error verifying credential: {str(e)}")

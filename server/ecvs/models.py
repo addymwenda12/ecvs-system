@@ -36,6 +36,6 @@ class Credential(models.Model):
 
     def verify(self):
         # Use the blockchain to verify the credential
-        self.is_verified = verify_credential(str(self.id))
+        self.is_verified = verify_credential(self.credential_id)
         self.save()
         return self.is_verified
