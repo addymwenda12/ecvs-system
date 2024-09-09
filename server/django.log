@@ -135,3 +135,11 @@ INFO 2024-09-08 23:57:10,080 views Creating credential: {'user': 1, 'degree': 'B
 INFO 2024-09-08 23:57:10,120 basehttp "POST /api/credentials/ HTTP/1.1" 201 181
 INFO 2024-09-09 13:24:11,019 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\models.py changed, reloading.
 INFO 2024-09-09 13:24:14,491 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:25:53,394 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-09 13:25:57,074 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:26:18,563 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-09 13:26:22,462 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:26:31,266 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-09 13:26:34,500 autoreload Watching for file changes with StatReloader
+INFO 2024-09-09 13:27:00,005 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-09 13:27:08,276 autoreload Watching for file changes with StatReloader
