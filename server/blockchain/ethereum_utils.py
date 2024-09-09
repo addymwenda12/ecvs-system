@@ -17,7 +17,7 @@ chain_id = w3.eth.chainId
 
 # Load contract ABI and address
 with open('server/blockchain/CredentialContract.json') as f:
-  contract_json = json.load(f)
+    contract_json = json.load(f)
 contract_abi = contract_json['abi']
 contract_address = os.getenv('CONTRACT_ADDRESS')
 
@@ -32,7 +32,7 @@ def issue_credential(credential_id, hash_value):
     nonce = w3.eth.get_transaction_count(account.address)
     
     txn = credential_contract.functions.issueCredential(credential_id, hash_value).build_transaction({
-        'chainId': 1,  # Mainnet
+        'chainId': chain_id,  # Mainnet
         'gas': 2000000,
         'gasPrice': w3.eth.gas_price,
         'nonce': nonce,
