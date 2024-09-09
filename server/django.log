@@ -131,3 +131,7 @@ INFO 2024-09-08 23:55:25,855 autoreload C:\Users\HP\Documents\myProjects\ethSafa
 INFO 2024-09-08 23:55:27,956 autoreload Watching for file changes with StatReloader
 INFO 2024-09-08 23:55:46,019 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
 INFO 2024-09-08 23:55:48,867 autoreload Watching for file changes with StatReloader
+INFO 2024-09-08 23:57:10,080 views Creating credential: {'user': 1, 'degree': 'Bachelor of Science', 'institution': 'University of Nairobi', 'date_issued': '2023-05-01', 'credential_id': '234567'}
+INFO 2024-09-08 23:57:10,120 basehttp "POST /api/credentials/ HTTP/1.1" 201 181
+INFO 2024-09-09 13:24:11,019 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\models.py changed, reloading.
+INFO 2024-09-09 13:24:14,491 autoreload Watching for file changes with StatReloader

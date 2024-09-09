@@ -25,6 +25,7 @@ class Credential(models.Model):
     credential_id = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='credentials')
+    is_verified = models.BooleanField(default=False)
 
     def __str__(self):
         """
@@ -34,8 +35,7 @@ class Credential(models.Model):
 
     def verify(self):
         # Simulate verification logic
-        # Querying blockchain
-        if self.credential_id.startswith("123"):
-            return True
-        else:
-            return False
+        # In a real-world scenario, this would interact with the blockchain
+        self.is_verified = self.credential_id.startswith("123")
+        self.save()
+        return self.is_verified
