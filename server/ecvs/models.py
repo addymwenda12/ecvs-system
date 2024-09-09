@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from ..blockchain.ethereum_utils import verify_credential
 
 class User(AbstractUser):
     """
@@ -34,8 +35,7 @@ class Credential(models.Model):
         return f"{self.degree} from {self.institution} ({self.date_issued})"
 
     def verify(self):
-        # Simulate verification logic
-        # In a real-world scenario, this would interact with the blockchain
-        self.is_verified = self.credential_id.startswith("123")
+        # Use the blockchain to verify the credential
+        self.is_verified = verify_credential(str(self.id))
         self.save()
         return self.is_verified

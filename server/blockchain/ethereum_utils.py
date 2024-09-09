@@ -2,6 +2,7 @@ from web3 import Web3
 from dotenv import load_dotenv
 import os
 import json
+from .contract_abi import CONTRACT_ABI
 
 load_dotenv()
 
@@ -47,3 +48,12 @@ def verify_credential(credential_id):
     Verify a credential on the blockchain
     """
     return credential_contract.functions.verifyCredential(credential_id).call()
+
+def get_contract():
+    """
+    Get the contract instance
+    """
+    web3 = Web3(Web3.HTTPProvider(os.getenv('ETHEREUM_NODE_URL')))
+    contract_address = os.getenv('CONTRACT_ADDRESS')
+    contract = web3.eth.contract(address=contract_address, abi=CONTRACT_ABI)
+    return contract
