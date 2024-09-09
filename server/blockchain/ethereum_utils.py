@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import json
 from .contract_abi import CONTRACT_ABI
+from tenacity import retry, stop_after_attempt, wait_fixed
 
 load_dotenv()
 
@@ -27,23 +28,35 @@ contract_address = os.getenv('CONTRACT_ADDRESS')
 # Create cotract instance
 credential_contract = w3.eth.contract(address=contract_address, abi=contract_abi)
 
+def estimate_gas_price():
+    """
+    Estimate the current gas price
+    """
+    return w3.eth.generate_gas_price()
+
 def issue_credential(credential_id, hash_value):
     """
     Issue a credential on the blockchain
     """
-    account = w3.eth.account.from_key(os.getenv('PRIVATE_KEY'))
-    nonce = w3.eth.get_transaction_count(account.address)
-    
-    txn = credential_contract.functions.issueCredential(credential_id, hash_value).build_transaction({
-        'chainId': chain_id,  # Mainnet
-        'gas': 2000000,
-        'gasPrice': w3.eth.gas_price,
-        'nonce': nonce,
-    })
+    try:
+        account = w3.eth.account.from_key(os.getenv('PRIVATE_KEY'))
+        nonce = w3.eth.get_transaction_count(account.address)
+        
+        txn = credential_contract.functions.issueCredential(credential_id, hash_value).build_transaction({
+            'chainId': chain_id,  # Mainnet
+            'gas': 2000000,
+            'gasPrice': estimate_gas_price(),
+            'nonce': nonce,
+        })
 
-    signed_txn = account.sign_transaction(txn)
-    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
-    return w3.eth.wait_for_transaction_receipt(tx_hash)
+        signed_txn = account.sign_transaction(txn)
+        tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+        receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+        print(f"Credential {credential_id} issued. Transaction hash: {tx_hash.hex()}")
+        return receipt
+    except Exception as e:
+        print(f"Error issuing credential {credential_id}: {str(e)}")
+        return None
 
 def verify_credential(credential_id):
     """
@@ -66,3 +79,11 @@ def get_contract():
     contract_address = os.getenv('CONTRACT_ADDRESS')
     contract = web3.eth.contract(address=contract_address, abi=CONTRACT_ABI)
     return contract
+
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
+def issue_credential_with_retry(credential_id, hash_value):
+    return issue_credential(credential_id, hash_value)
+
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
+def verify_credential_with_retry(credential_id):
+    return verify_credential(credential_id)

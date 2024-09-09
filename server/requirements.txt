@@ -3,4 +3,5 @@ djangorestframework
 python-dotenv
 web3
 django-filter
+tenacity
 # google-generativeai
