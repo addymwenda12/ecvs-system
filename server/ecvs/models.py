@@ -87,3 +87,14 @@ class Credential(models.Model):
             **self.public_data,
             **self.private_data
         }
+
+class Wallet(models.Model):
+    """
+    Simple digital wallet Model
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wallet')
+    address = models.CharField(max_length=42, unique=True)  # Ethereum address length
+    balance = models.DecimalField(max_digits=18, decimal_places=8, default=0)
+
+    def __str__(self):
+        return f"Wallet for {self.user.username}"

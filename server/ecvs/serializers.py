@@ -4,9 +4,10 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 class UserSerializer(serializers.ModelSerializer):
+    wallet = WalletSerilizer(read_only=True)
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'role']
+        fields = ['id', 'username', 'email', 'role', 'wallet']
 
 class CredentialSerializer(serializers.ModelSerializer):
     """
@@ -65,3 +66,12 @@ class CredentialSerializer(serializers.ModelSerializer):
         if user and user == instance.user:
             return instance.get_private_view()
         return instance.get_public_view()
+
+class WalletSerializer(serializers.ModelSerializer):
+    """
+    Serializer for wallet model
+    """
+    class Meta:
+        model = Wallet
+        fields = ['address', 'balance']
+        read_only_fields = ['balance']

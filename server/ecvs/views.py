@@ -2,11 +2,12 @@ import logging
 from rest_framework import viewsets, status, serializers
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import Http404
-from .models import Credential
-from .serializers import CredentialSerializer
+from .models import Credential, Wallet
+from .serializers import CredentialSerializer, WalletSerializer
 from blockchain.ethereum_utils import issue_credential
 import hashlib
 
@@ -93,3 +94,22 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             logger.error(f"Error deleting credential: {str(e)}")
             return Response({"error": "An error occurred while deleting the credential."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class WalletView(APIView):
+    """
+    Viewset for Wallet model
+    """
+    def get(self, request):
+        wallet, created = Wallet.objects.get_or_create(user=request.user)
+        serializer = WalletSerializer(wallet)
+        return Response(serializer.data)
+
+    def post(self, request):
+        wallet, created = Wallet.objects.get_or_create(user=request.user)
+        if created:
+            # Here you would typically generate a new Ethereum address
+            # For simplicity, we're just using a placeholder
+            wallet.address = f"0x{request.user.id:040x}"
+            wallet.save()
+        serializer = WalletSerializer(wallet)
+        return Response(serializer.data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
