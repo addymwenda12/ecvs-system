@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from blockchain.ethereum_utils import verify_credential
+from blockchain.ipfs_utils import add_to_ipfs, get_from_ipfs
 
 class User(AbstractUser):
     """
@@ -27,6 +28,7 @@ class Credential(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='credentials')
     is_verified = models.BooleanField(default=False)
+    ipfs_hash = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         """
@@ -34,8 +36,29 @@ class Credential(models.Model):
         """
         return f"{self.degree} from {self.institution} ({self.date_issued})"
 
+    def save(self, *args, **kwargs):
+        if not self.ipfs_hash:
+            credential_data = {
+                'degree': self.degree,
+                'institution': self.institution,
+                'date_issued': str(self.date_issued),
+                'credential_id': self.credential_id,
+            }
+            self.ipfs_hash = add_to_ipfs(credential_data)
+        super().save(*args, **kwargs)
+
     def verify(self):
-        # Use the blockchain to verify the credential
-        self.is_verified = verify_credential(self.credential_id)
+        is_verified, ipfs_hash = verify_credential(self.credential_id)
+        self.is_verified = is_verified
+        if is_verified and ipfs_hash:
+            ipfs_data = get_from_ipfs(ipfs_hash)
+            # Verify IPFS data matches the stored data
+            if (ipfs_data['degree'] == self.degree and
+                ipfs_data['institution'] == self.institution and
+                ipfs_data['date_issued'] == str(self.date_issued) and
+                ipfs_data['credential_id'] == self.credential_id):
+                self.is_verified = True
+            else:
+                self.is_verified = False
         self.save()
         return self.is_verified
