@@ -88,13 +88,31 @@ class Credential(models.Model):
             **self.private_data
         }
 
+    def get_selective_view(self, fields):
+        allowed_fields = set(self.get_private_view().keys())
+        requested_fields = set(fields)
+        valid_fields = allowed_fields.intersection(requested_fields)
+        return {field: getattr(self, field) for field in valid_fields}
+
+    def to_verifiable_credential(self):
+        from blockchain.verifiable_credential import VerifiableCredential
+        return VerifiableCredential(self).to_json()
+
 class Wallet(models.Model):
-    """
-    Simple digital wallet Model
-    """
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wallet')
-    address = models.CharField(max_length=42, unique=True)  # Ethereum address length
+    address = models.CharField(max_length=42, unique=True)
     balance = models.DecimalField(max_digits=18, decimal_places=8, default=0)
+    private_key = models.CharField(max_length=64, blank=True)  # Store encrypted
 
     def __str__(self):
         return f"Wallet for {self.user.username}"
+
+    def generate_address(self):
+        import secrets
+        self.address = '0x' + secrets.token_hex(20)
+        self.save()
+
+    def update_balance(self):
+        from blockchain.ethereum_utils import get_balance
+        self.balance = get_balance(self.address)
+        self.save()

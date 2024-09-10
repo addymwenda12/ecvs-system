@@ -85,6 +85,18 @@ class CredentialViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @action(detail=True, methods=['get'])
+    def selective(self, request, pk=None):
+        credential = self.get_object()
+        fields = request.query_params.get('fields', '').split(',')
+        serializer = self.get_serializer(credential, context={'fields': fields})
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def verifiable(self, request, pk=None):
+        credential = self.get_object()
+        return Response(json.loads(credential.to_verifiable_credential()))
+
     def destroy(self, request, *args, **kwargs):
         """
         Delete a credential
@@ -101,15 +113,16 @@ class WalletView(APIView):
     """
     def get(self, request):
         wallet, created = Wallet.objects.get_or_create(user=request.user)
+        if created:
+            wallet.generate_address()
+        wallet.update_balance()
         serializer = WalletSerializer(wallet)
         return Response(serializer.data)
 
     def post(self, request):
         wallet, created = Wallet.objects.get_or_create(user=request.user)
         if created:
-            # Here you would typically generate a new Ethereum address
-            # For simplicity, we're just using a placeholder
-            wallet.address = f"0x{request.user.id:040x}"
-            wallet.save()
+            wallet.generate_address()
+        wallet.update_balance()
         serializer = WalletSerializer(wallet)
         return Response(serializer.data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
