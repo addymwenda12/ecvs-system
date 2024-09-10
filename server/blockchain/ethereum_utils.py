@@ -87,3 +87,15 @@ def issue_credential_with_retry(credential_id, hash_value):
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
 def verify_credential_with_retry(credential_id):
     return verify_credential(credential_id)
+
+def get_balance(address):
+    """
+    Get the balance of an Ethereum address
+    """
+    try:
+        balance_wei = w3.eth.get_balance(address)
+        balance_eth = w3.from_wei(balance_wei, 'ether')
+        return float(balance_eth)
+    except Exception as e:
+        print(f"Error getting balance for address {address}: {str(e)}")
+        return 0.0
