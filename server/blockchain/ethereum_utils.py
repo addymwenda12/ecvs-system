@@ -34,7 +34,7 @@ def estimate_gas_price():
     """
     return w3.eth.generate_gas_price()
 
-def issue_credential(credential_id, hash_value):
+def issue_credential(credential_id, hash_value, ipfs_hash):
     """
     Issue a credential on the blockchain
     """
@@ -99,3 +99,10 @@ def get_balance(address):
     except Exception as e:
         print(f"Error getting balance for address {address}: {str(e)}")
         return 0.0
+
+def generate_ethereum_address():
+    """
+    Generate a new Ethereum address and private key
+    """
+    account = w3.eth.account.create()
+    return account.address, account.privateKey.hex()

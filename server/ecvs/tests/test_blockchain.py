@@ -1,7 +1,7 @@
 from django.test import TestCase
 from unittest.mock import patch, MagicMock
-from ..models import Credential, User
-from blockchain.ethereum_utils import issue_credential, verify_credential
+from ..models import Credential, User, Wallet
+from blockchain.ethereum_utils import issue_credential, verify_credential, get_balance, generate_ethereum_address
 from web3 import Web3
 
 class BlockchainTest(TestCase):
@@ -14,6 +14,7 @@ class BlockchainTest(TestCase):
             credential_id="TEST123",
             user=self.user
         )
+        self.wallet = Wallet.objects.create(user=self.user)
 
     @patch('blockchain.ethereum_utils.w3')
     def test_issue_credential(self, mock_w3):
@@ -67,3 +68,22 @@ class BlockchainTest(TestCase):
 
         result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
         self.assertEqual(result['status'], 1)
+
+    @patch('blockchain.ethereum_utils.w3')
+    def test_get_balance(self, mock_w3):
+        mock_w3.eth.get_balance.return_value = Web3.to_wei(1.5, 'ether')
+        mock_w3.from_wei.return_value = 1.5
+        balance = get_balance(self.wallet.address)
+        self.assertEqual(balance, 1.5)
+
+    def test_generate_ethereum_address(self):
+        address, private_key = generate_ethereum_address()
+        self.assertTrue(Web3.is_address(address))
+        self.assertEqual(len(private_key), 64)  # 32 bytes in hex
+
+    def test_wallet_encryption(self):
+        test_private_key = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+        self.wallet.set_private_key(test_private_key)
+        self.assertNotEqual(self.wallet.encrypted_private_key, test_private_key)
+        decrypted_key = self.wallet.get_private_key()
+        self.assertEqual(decrypted_key, test_private_key)

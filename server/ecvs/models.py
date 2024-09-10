@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from blockchain.ethereum_utils import verify_credential
 from blockchain.ipfs_utils import add_to_ipfs, get_from_ipfs
 import json
+from cryptography.fernet import Fernet
+from django.conf import settings
 
 class User(AbstractUser):
     """
@@ -102,14 +104,26 @@ class Wallet(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wallet')
     address = models.CharField(max_length=42, unique=True)
     balance = models.DecimalField(max_digits=18, decimal_places=8, default=0)
-    private_key = models.CharField(max_length=64, blank=True)  # Store encrypted
+    encrypted_private_key = models.BinaryField(blank=True, null=True)
 
     def __str__(self):
         return f"Wallet for {self.user.username}"
 
+    def set_private_key(self, private_key):
+        f = Fernet(settings.ENCRYPTION_KEY)
+        self.encrypted_private_key = f.encrypt(private_key.encode())
+
+    def get_private_key(self):
+        if self.encrypted_private_key:
+            f = Fernet(settings.ENCRYPTION_KEY)
+            return f.decrypt(self.encrypted_private_key).decode()
+        return None
+
     def generate_address(self):
-        import secrets
-        self.address = '0x' + secrets.token_hex(20)
+        from blockchain.ethereum_utils import generate_ethereum_address
+        address, private_key = generate_ethereum_address()
+        self.address = address
+        self.set_private_key(private_key)
         self.save()
 
     def update_balance(self):

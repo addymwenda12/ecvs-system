@@ -5,4 +5,5 @@ web3
 django-filter
 tenacity
 ipfshttpclient
+cryptography
 # google-generativeai
