@@ -11,6 +11,7 @@ from .serializers import CredentialSerializer, WalletSerializer
 from blockchain.ethereum_utils import issue_credential
 import hashlib
 import json
+from blockchain.ipfs_utils import connect_to_ipfs
 
 logger = logging.getLogger(__name__)
 
@@ -30,19 +31,17 @@ class CredentialViewSet(viewsets.ModelViewSet):
         Create a new credential.
         """
         try:
+            ipfs_client = connect_to_ipfs()
+            if not ipfs_client:
+                return Response({"error": "IPFS connection failed"}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+            
             serializer = self.get_serializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except serializers.ValidationError as e:
-            logger.error(f"Validation error: {str(e)}")
-            return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
-        except IntegrityError as e:
-            logger.error(f"Integrity error: {str(e)}")
-            return Response({"error": "A credential with this ID already exists."}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-            logger.error(f"Unexpected error: {str(e)}")
-            return Response({"error": "An unexpected error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            logger.error(f"Error creating credential: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def update(self, request, *args, **kwargs):
         """

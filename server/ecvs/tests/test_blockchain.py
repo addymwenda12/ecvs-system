@@ -1,18 +1,22 @@
 from django.test import TestCase
 from unittest.mock import patch, MagicMock
 from ..models import Credential, User, Wallet
-from blockchain.ethereum_utils import issue_credential, verify_credential, get_balance, generate_ethereum_address
+from blockchain.ethereum_utils import issue_credential, issue_credential_with_retry, verify_credential, get_balance, generate_ethereum_address
 from web3 import Web3
 
 class BlockchainTest(TestCase):
-    def setUp(self):
+    @patch('blockchain.ipfs_utils.connect_to_ipfs')
+    def setUp(self, mock_connect_to_ipfs):
+        mock_ipfs_client = MagicMock()
+        mock_connect_to_ipfs.return_value = mock_ipfs_client
+        
         self.user = User.objects.create_user(username='testuser', password='testpass', role='student')
         self.credential = Credential.objects.create(
             degree="Test Degree",
-            institution="Test Institution",
+            institution="Test University",
             date_issued="2023-01-01",
             credential_id="TEST123",
-            user=self.user
+            user_id=1
         )
         self.wallet = Wallet.objects.create(user=self.user)
 

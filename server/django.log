@@ -1,0 +1,120 @@
+ERROR 2024-09-10 12:39:44,594 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F53582780>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:39:44,596 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:39:48,183 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F53580CE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:39:48,183 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:39:50,242 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F535A53D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:39:50,249 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:39:51,265 views Validation error: {'date_issued': [ErrorDetail(string='Date issued cannot be in the future.', code='invalid')]}
+WARNING 2024-09-10 12:39:51,266 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:39:52,242 views Validation error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-10 12:39:52,243 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:39:53,242 views Validation error: {'institution': [ErrorDetail(string='Institution must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-10 12:39:53,242 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:39:56,244 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F535A7200>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:39:56,247 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:39:56,250 views Error deleting credential: No Credential matches the given query.
+ERROR 2024-09-10 12:39:56,252 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:40:00,236 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F535A7FE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:40:00,240 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:40:00,246 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 12:40:00,249 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:40:03,303 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F535811C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:40:03,307 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:40:03,313 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 12:40:03,315 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:40:06,354 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x0000025F535CEFF0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:40:06,358 log Internal Server Error: /api/credentials/
+WARNING 2024-09-10 12:40:06,366 log Not Found: /api/credentials/1/verify/
+WARNING 2024-09-10 12:40:07,383 log Not Found: /api/credentials/999/verify/
+ERROR 2024-09-10 12:41:40,600 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5EB2120>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:41:40,607 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:41:43,788 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5EB0FE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:41:43,791 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:41:45,838 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5ED0FB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:41:45,842 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:41:46,843 views Validation error: {'date_issued': [ErrorDetail(string='Date issued cannot be in the future.', code='invalid')]}
+WARNING 2024-09-10 12:41:46,844 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:41:48,124 views Validation error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-10 12:41:48,125 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:41:49,337 views Validation error: {'institution': [ErrorDetail(string='Institution must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-10 12:41:49,338 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:41:52,480 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5ED1100>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:41:52,482 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:41:52,484 views Error deleting credential: No Credential matches the given query.
+ERROR 2024-09-10 12:41:52,485 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:41:56,931 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5ED3B00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:41:56,934 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:41:56,938 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 12:41:56,940 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:42:00,129 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5EB0320>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:42:00,133 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:42:00,136 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 12:42:00,138 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:42:03,164 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000243D5EFEB10>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:42:03,166 log Internal Server Error: /api/credentials/
+WARNING 2024-09-10 12:42:03,170 log Not Found: /api/credentials/1/verify/
+WARNING 2024-09-10 12:42:04,400 log Not Found: /api/credentials/999/verify/
+ERROR 2024-09-10 12:43:37,706 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C3608DA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:43:37,708 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:43:40,930 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C360AD20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:43:40,932 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:43:42,970 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C360BB90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:43:42,972 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:43:44,497 views Validation error: {'date_issued': [ErrorDetail(string='Date issued cannot be in the future.', code='invalid')]}
+WARNING 2024-09-10 12:43:44,498 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:43:45,772 views Validation error: {'degree': [ErrorDetail(string='Degree must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-10 12:43:45,773 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:43:47,201 views Validation error: {'institution': [ErrorDetail(string='Institution must be at least 2 characters long.', code='invalid')]}
+WARNING 2024-09-10 12:43:47,202 log Bad Request: /api/credentials/
+ERROR 2024-09-10 12:43:50,274 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C360A9C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:43:50,277 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:43:50,279 views Error deleting credential: No Credential matches the given query.
+ERROR 2024-09-10 12:43:50,280 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:43:54,544 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C3609C40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:43:54,563 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:43:54,586 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 12:43:54,589 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:43:59,164 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C36082F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:43:59,166 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:43:59,168 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 12:43:59,169 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 12:44:02,273 views Unexpected error: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5001): Max retries exceeded with url: /api/v0/version?stream-channels=true (Caused by NewConnectionError('<ipfshttpclient.requests_wrapper.HTTPConnection object at 0x00000210C360A5D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+ERROR 2024-09-10 12:44:02,274 log Internal Server Error: /api/credentials/
+WARNING 2024-09-10 12:44:02,278 log Not Found: /api/credentials/1/verify/
+WARNING 2024-09-10 12:44:03,553 log Not Found: /api/credentials/999/verify/
+ERROR 2024-09-10 12:59:58,579 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:59:59,659 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 12:59:59,706 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:00,865 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:01,909 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:02,934 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:04,331 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:04,334 views Error deleting credential: No Credential matches the given query.
+ERROR 2024-09-10 13:00:04,336 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 13:00:07,020 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:07,023 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 13:00:07,024 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 13:00:08,238 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:00:08,242 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 13:00:08,243 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 13:00:09,345 log Internal Server Error: /api/credentials/
+WARNING 2024-09-10 13:00:09,348 log Not Found: /api/credentials/1/verify/
+WARNING 2024-09-10 13:00:10,496 log Not Found: /api/credentials/999/verify/
+ERROR 2024-09-10 13:02:15,501 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:16,857 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:16,965 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:18,221 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:19,557 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:20,811 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:22,613 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:22,615 views Error deleting credential: No Credential matches the given query.
+ERROR 2024-09-10 13:02:22,616 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 13:02:25,094 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:25,096 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 13:02:25,097 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 13:02:26,491 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 13:02:26,494 views Unexpected error: No Credential matches the given query.
+ERROR 2024-09-10 13:02:26,502 log Internal Server Error: /api/credentials/1/
+ERROR 2024-09-10 13:02:27,754 log Internal Server Error: /api/credentials/
+WARNING 2024-09-10 13:02:27,757 log Not Found: /api/credentials/1/verify/
+WARNING 2024-09-10 13:02:28,887 log Not Found: /api/credentials/999/verify/
