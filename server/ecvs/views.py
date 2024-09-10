@@ -7,6 +7,8 @@ from django.db import IntegrityError
 from django.http import Http404
 from .models import Credential
 from .serializers import CredentialSerializer
+from blockchain.ethereum_utils import issue_credential
+import hashlib
 
 logger = logging.getLogger(__name__)
 
@@ -61,6 +63,13 @@ class CredentialViewSet(viewsets.ModelViewSet):
             logger.error(f"Unexpected error: {str(e)}")
             return Response({"error": "An unexpected error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    def perform_create(self, serializer):
+        credential = serializer.save()
+        # Generate hash of the credential data
+        hash_value = hashlib.sha256(f"{credential.degree}{credential.institution}{credential.date_issued}{credential.credential_id}".encode()).hexdigest()
+        # Issue the credential on the blockchain
+        issue_credential(credential.credential_id, hash_value, credential.ipfs_hash)
+
     @action(detail=True, methods=['post'])
     def verify(self, request, pk=None):
         """
@@ -68,16 +77,12 @@ class CredentialViewSet(viewsets.ModelViewSet):
         """
         try:
             credential = self.get_object()
-            logger.info(f"Verifying credential with ID: {credential.credential_id}")
             is_verified = credential.verify()
-            logger.info(f"Credential {credential.credential_id} verification result: {is_verified}")
             return Response({'is_verified': is_verified})
         except Http404:
-            logger.warning(f"Credential with ID {pk} not found")
             return Response({"error": "Credential not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            logger.error(f"Error verifying credential: {str(e)}")
-            return Response({"error": "An error occurred while verifying the credential."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def destroy(self, request, *args, **kwargs):
         """
