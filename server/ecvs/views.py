@@ -136,39 +136,18 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'])
     def login(self, request):
+        logger.info(f"Login attempt for user: {request.data.get('username')}")
         print("Login request data:", request.data)
         username = request.data.get('username')
         password = request.data.get('password')
         if not username or not password:
             return Response({"error": "Both username and password are required"}, status=status.HTTP_400_BAD_REQUEST)
-        
-        User = get_user_model()
-        try:
-            user = User.objects.get(username=username)
-            print(f"User found: {user}")
-            print(f"Stored password hash: {user.password}")
-            print(f"Raw password: {password}")
-            print(f"Password check result: {check_password(password, user.password)}")
-            
-            # Additional checks
-            from django.contrib.auth.hashers import make_password
-            print(f"New hash of provided password: {make_password(password)}")
-            print(f"Direct comparison: {user.password == make_password(password)}")
-        except User.DoesNotExist:
-            print(f"User with username {username} does not exist")
-            return Response({"error": "User does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
-        auth_user = authenticate(username=username, password=password)
-        if auth_user:
-            print("Authentication successful")
-            return Response(UserSerializer(auth_user).data)
+        user = authenticate(request, username=username, password=password)
+        if user:
+            return Response(UserSerializer(user).data)
         else:
-            print("Authentication failed")
-            if user.check_password(password):
-                print("Password is correct, but authentication failed")
-            else:
-                print("Password is incorrect")
-            return Response({"error": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=['post'])
     def register(self, request):
@@ -184,14 +163,13 @@ def register_user(request):
     User = get_user_model()
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
+        password = serializer.validated_data.get('password')
+        if not password:
+            return Response({"error": "Password is required"}, status=status.HTTP_400_BAD_REQUEST)
         user = User.objects.create_user(
             username=serializer.validated_data['username'],
-            password=serializer.validated_data['password'],
-            role=serializer.validated_data['role']
+            password=password,
+            role=serializer.validated_data.get('role')
         )
-        print(f"User created: {user.username}")
-        print(f"Password hash after creation: {user.password}")
-        print(f"Password check immediately after creation: {user.check_password(serializer.validated_data['password'])}")
-        
         return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 
-export const login = (username, password) => api.post('/login/', { username, password });
+export const login = (username, password) => api.post('/users/login/', { username, password });
 export const register = (username, password, role) => api.post('/register/', { username, password, role });
 export const createCredential = (data) => api.post('/credentials/', data);
 export const verifyCredential = (id) => api.post(`/credentials/${id}/verify/`);

@@ -119,3 +119,74 @@ INFO 2024-09-10 18:44:53,731 autoreload C:\Users\HP\Documents\myProjects\ethSafa
 INFO 2024-09-10 18:44:59,092 autoreload Watching for file changes with StatReloader
 INFO 2024-09-10 18:46:17,131 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
 INFO 2024-09-10 18:46:22,980 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:30:43,169 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 22:32:06,812 log Not Found: /api/register/
+WARNING 2024-09-10 22:32:06,814 basehttp "POST /api/register/ HTTP/1.1" 404 8219
+WARNING 2024-09-10 22:32:39,353 log Not Found: /register/
+WARNING 2024-09-10 22:32:39,354 basehttp "POST /register/ HTTP/1.1" 404 2350
+WARNING 2024-09-10 22:33:18,391 log Not Found: /api/login/
+WARNING 2024-09-10 22:33:18,391 basehttp "POST /api/login/ HTTP/1.1" 404 8210
+INFO 2024-09-10 22:35:40,668 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\server\urls.py changed, reloading.
+INFO 2024-09-10 22:35:45,961 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 22:35:55,163 log Bad Request: /api/login/
+WARNING 2024-09-10 22:35:55,164 basehttp "POST /api/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 22:45:50,380 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-10 22:45:58,261 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:46:24,113 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 22:46:32,567 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:47:13,528 views Login attempt for user: testuser
+WARNING 2024-09-10 22:47:21,569 log Bad Request: /api/login/
+WARNING 2024-09-10 22:47:21,569 basehttp "POST /api/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 22:48:34,684 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-10 22:48:41,214 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:49:04,889 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 22:49:11,210 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 22:49:21,361 log Bad Request: /api/register/
+WARNING 2024-09-10 22:49:21,361 basehttp "POST /api/register/ HTTP/1.1" 400 93
+ERROR 2024-09-10 22:49:58,604 log Internal Server Error: /api/register/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py", line 166, in register_user
+    password=serializer.validated_data['password'],
+             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'password'
+ERROR 2024-09-10 22:49:58,623 basehttp "POST /api/register/ HTTP/1.1" 500 102081
+INFO 2024-09-10 22:51:39,743 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 22:51:45,071 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:51:59,478 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-10 22:52:05,459 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:52:09,009 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 22:52:14,778 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:52:29,237 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 22:52:35,289 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:52:44,183 basehttp "POST /api/register/ HTTP/1.1" 201 71
+INFO 2024-09-10 22:52:58,644 views Login attempt for user: Jacinta
+INFO 2024-09-10 22:53:00,076 basehttp "POST /api/login/ HTTP/1.1" 200 71
+INFO 2024-09-10 22:53:06,506 views Login attempt for user: Jacinta
+INFO 2024-09-10 22:53:07,640 basehttp "POST /api/login/ HTTP/1.1" 200 71
+INFO 2024-09-10 22:53:27,162 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 22:53:34,487 autoreload Watching for file changes with StatReloader
