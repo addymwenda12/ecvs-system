@@ -1,94 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { createCredential, verifyCredential, getCredentials } from '../api/api';
-import BlockchainInfo from './BlockchainInfo';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCredentials } from '../store/credentialSlice';
+import { getCredentials } from '../api/api';
+import CredentialList from './CredentialList';
+import CredentialStats from './CredentialStats';
+import SearchBar from './SearchBar';
 
-function Dashboard({ user }) {
-  const [credentials, setCredentials] = useState([]);
-  const [newCredential, setNewCredential] = useState({
-    degree: '',
-    institution: '',
-    date_issued: '',
-    credential_id: '',
-  });
+function Dashboard() {
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector(state => state.user);
+  const { list: credentials } = useSelector(state => state.credentials);
 
   useEffect(() => {
+    const fetchCredentials = async () => {
+      try {
+        const response = await getCredentials();
+        dispatch(setCredentials(response.data));
+      } catch (error) {
+        console.error('Error fetching credentials:', error);
+      }
+    };
     fetchCredentials();
-  }, []);
-
-  const fetchCredentials = async () => {
-    try {
-      const response = await getCredentials();
-      setCredentials(response.data);
-    } catch (error) {
-      console.error('Error fetching credentials:', error);
-    }
-  };
-
-  const handleCreateCredential = async (e) => {
-    e.preventDefault();
-    try {
-      await createCredential(newCredential);
-      fetchCredentials();
-      setNewCredential({ degree: '', institution: '', date_issued: '', credential_id: '' });
-    } catch (error) {
-      console.error('Error creating credential:', error);
-    }
-  };
-
-  const handleVerifyCredential = async (id) => {
-    try {
-      const response = await verifyCredential(id);
-      alert(response.data.is_verified ? 'Credential verified!' : 'Credential not verified.');
-    } catch (error) {
-      console.error('Error verifying credential:', error);
-    }
-  };
+  }, [dispatch]);
 
   return (
     <div>
-      <h2>Welcome, {user.username}!</h2>
-      <h3>Create New Credential</h3>
-      <form onSubmit={handleCreateCredential}>
-        <input
-          type="text"
-          value={newCredential.degree}
-          onChange={(e) => setNewCredential({ ...newCredential, degree: e.target.value })}
-          placeholder="Degree"
-          required
-        />
-        <input
-          type="text"
-          value={newCredential.institution}
-          onChange={(e) => setNewCredential({ ...newCredential, institution: e.target.value })}
-          placeholder="Institution"
-          required
-        />
-        <input
-          type="date"
-          value={newCredential.date_issued}
-          onChange={(e) => setNewCredential({ ...newCredential, date_issued: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          value={newCredential.credential_id}
-          onChange={(e) => setNewCredential({ ...newCredential, credential_id: e.target.value })}
-          placeholder="Credential ID"
-          required
-        />
-        <button type="submit">Create Credential</button>
-      </form>
-
-      <h3>Your Credentials</h3>
-      <ul>
-        {credentials.map((credential) => (
-          <li key={credential.id}>
-            {credential.degree} - {credential.institution}
-            <button onClick={() => handleVerifyCredential(credential.id)}>Verify</button>
-          </li>
-        ))}
-      </ul>
-      <BlockchainInfo />
+      <h2>Welcome, {currentUser.username}!</h2>
+      <SearchBar />
+      <CredentialList credentials={credentials} />
+      <CredentialStats credentials={credentials} />
     </div>
   );
 }
