@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from blockchain.ethereum_utils import verify_credential
 from blockchain.ipfs_utils import add_to_ipfs, get_from_ipfs
+import json
 
 class User(AbstractUser):
     """
@@ -29,6 +30,8 @@ class Credential(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='credentials')
     is_verified = models.BooleanField(default=False)
     ipfs_hash = models.CharField(max_length=100, blank=True)
+    private_data = models.JSONField(default=dict, blank=True)
+    public_data = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
         """
@@ -39,12 +42,14 @@ class Credential(models.Model):
     def save(self, *args, **kwargs):
         if not self.ipfs_hash:
             credential_data = {
+                'public': self.public_data,
+                'private': self.private_data,
                 'degree': self.degree,
                 'institution': self.institution,
                 'date_issued': str(self.date_issued),
                 'credential_id': self.credential_id,
             }
-            self.ipfs_hash = add_to_ipfs(credential_data)
+            self.ipfs_hash = add_to_ipfs(json.dumps(credential_data))
         super().save(*args, **kwargs)
 
     def verify(self):
@@ -62,3 +67,23 @@ class Credential(models.Model):
                 self.is_verified = False
         self.save()
         return self.is_verified
+
+    def get_public_view(self):
+        return {
+            'degree': self.degree,
+            'institution': self.institution,
+            'date_issued': self.date_issued,
+            'is_verified': self.is_verified,
+            **self.public_data
+        }
+
+    def get_private_view(self):
+        return {
+            'degree': self.degree,
+            'institution': self.institution,
+            'date_issued': self.date_issued,
+            'is_verified': self.is_verified,
+            'credential_id': self.credential_id,
+            **self.public_data,
+            **self.private_data
+        }
