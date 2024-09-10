@@ -1,7 +1,16 @@
 from rest_framework import serializers
-from .models import Credential, User
+from .models import Credential, User, Wallet
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+
+class WalletSerializer(serializers.ModelSerializer):
+    """
+    Serializer for wallet model
+    """
+    class Meta:
+        model = Wallet
+        fields = ['address', 'balance']
+        read_only_fields = ['balance']
 
 class UserSerializer(serializers.ModelSerializer):
     wallet = WalletSerializer(read_only=True)
@@ -69,12 +78,3 @@ class CredentialSerializer(serializers.ModelSerializer):
                 return instance.get_selective_view(fields)
             return instance.get_private_view()
         return instance.get_public_view()
-
-class WalletSerializer(serializers.ModelSerializer):
-    """
-    Serializer for wallet model
-    """
-    class Meta:
-        model = Wallet
-        fields = ['address', 'balance']
-        read_only_fields = ['balance']

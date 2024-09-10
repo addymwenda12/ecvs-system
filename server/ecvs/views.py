@@ -10,6 +10,7 @@ from .models import Credential, Wallet
 from .serializers import CredentialSerializer, WalletSerializer
 from blockchain.ethereum_utils import issue_credential
 import hashlib
+import json
 
 logger = logging.getLogger(__name__)
 
