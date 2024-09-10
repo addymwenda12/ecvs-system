@@ -14,10 +14,12 @@ class CredentialSerializer(serializers.ModelSerializer):
     """
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), source='user', write_only=True)
+    public_data = serializers.JSONField(required=False)
+    private_data = serializers.JSONField(required=False, write_only=True)
 
     class Meta:
         model = Credential
-        fields = ['id', 'degree', 'institution', 'date_issued', 'credential_id', 'created_at', 'user', 'user_id', 'is_verified']
+        fields = ['id', 'degree', 'institution', 'date_issued', 'credential_id', 'created_at', 'user', 'user_id', 'is_verified', 'public_data', 'private_data']
         read_only_fields = ['id', 'created_at', 'is_verified']
 
     def validate_degree(self, value):
@@ -57,3 +59,9 @@ class CredentialSerializer(serializers.ModelSerializer):
         Create credentials
         """
         return Credential.objects.create(**validated_data)
+
+    def to_representation(self, instance):
+        user = self.context['request'].user if 'request' in self.context else None
+        if user and user == instance.user:
+            return instance.get_private_view()
+        return instance.get_public_view()
