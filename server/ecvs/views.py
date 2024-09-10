@@ -71,7 +71,11 @@ class CredentialViewSet(viewsets.ModelViewSet):
         # Generate hash of the credential data
         hash_value = hashlib.sha256(f"{credential.degree}{credential.institution}{credential.date_issued}{credential.credential_id}".encode()).hexdigest()
         # Issue the credential on the blockchain
-        issue_credential(credential.credential_id, hash_value, credential.ipfs_hash)
+        try:
+            issue_credential(credential.credential_id, hash_value, credential.ipfs_hash)
+        except Exception as e:
+            logger.error(f"Error issuing credential: {str(e)}")
+            # Handle the error appropriately
 
     @action(detail=True, methods=['post'])
     def verify(self, request, pk=None):
@@ -80,8 +84,8 @@ class CredentialViewSet(viewsets.ModelViewSet):
         """
         try:
             credential = self.get_object()
-            is_verified = verify_credential(credential.credential_id)
-            return Response({'is_verified': is_verified})
+            is_verified, ipfs_hash = verify_credential(credential.credential_id)
+            return Response({'is_verified': is_verified, 'ipfs_hash': ipfs_hash})
         except Http404:
             return Response({"error": "Credential not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:

@@ -32,7 +32,7 @@ def estimate_gas_price():
     """
     Estimate the current gas price
     """
-    return w3.eth.generate_gas_price()
+    return w3.eth.gas_price
 
 def issue_credential(credential_id, hash_value, ipfs_hash):
     """
@@ -81,8 +81,8 @@ def get_contract():
     return contract
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
-def issue_credential_with_retry(credential_id, hash_value):
-    return issue_credential(credential_id, hash_value)
+def issue_credential_with_retry(credential_id, hash_value, ipfs_hash):
+    return issue_credential(credential_id, hash_value, ipfs_hash)
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
 def verify_credential_with_retry(credential_id):
