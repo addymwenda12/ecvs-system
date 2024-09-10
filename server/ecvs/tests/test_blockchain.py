@@ -1,7 +1,7 @@
 from django.test import TestCase
 from unittest.mock import patch, MagicMock
 from ..models import Credential, User, Wallet
-from blockchain.ethereum_utils import issue_credential, issue_credential_with_retry, verify_credential, get_balance, generate_ethereum_address
+from blockchain.ethereum_utils import issue_credential, issue_credential_with_retry, verify_credential, verify_credential_with_retry, get_balance, generate_ethereum_address
 from web3 import Web3
 
 class BlockchainTest(TestCase):
@@ -16,7 +16,8 @@ class BlockchainTest(TestCase):
             institution="Test University",
             date_issued="2023-01-01",
             credential_id="TEST123",
-            user_id=1
+            user=self.user,
+            ipfs_hash="QmTestHash"
         )
         self.wallet = Wallet.objects.create(user=self.user)
 
@@ -26,35 +27,28 @@ class BlockchainTest(TestCase):
         mock_w3.eth.get_transaction_count.return_value = 0
         mock_w3.eth.send_raw_transaction.return_value = b'test_hash'
         mock_w3.eth.wait_for_transaction_receipt.return_value = {'status': 1}
-        mock_w3.eth.wait_for_transaction_receipt.return_value = {'status': 1}
-        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
-        self.assertEqual(result['status'], 1)
-        self.assertEqual(result['status'], 1)
-    @patch('blockchain.ethereum_utils.credential_contract')
-    def test_verify_credential(self, mock_contract):
-        mock_contract.functions.verifyCredential.return_value.call.return_value = True
-        mock_contract.functions.verifyCredential.return_value.call.return_value = True
-        result = verify_credential(self.credential.credential_id)
-        self.assertTrue(result)
-        self.assertTrue(result)
-    @patch('blockchain.ethereum_utils.w3')
-    def test_network_error(self, mock_w3):
-        mock_w3.eth.send_raw_transaction.side_effect = Exception("Network error")
-    @patch('blockchain.ethereum_utils.w3')
-    def test_invalid_credential(self, mock_w3):
-        mock_w3.eth.account.from_key.return_value = MagicMock()
-        mock_w3.eth.get_transaction_count.return_value = 0
-        mock_w3.eth.send_raw_transaction.return_value = b'test_hash'
-        mock_w3.eth.wait_for_transaction_receipt.return_value = {'status': 1}
-        mock_w3.eth.get_transaction_count.return_value = 0
-        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
+        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id).hex(), self.credential.ipfs_hash)
         self.assertEqual(result['status'], 1)
 
     @patch('blockchain.ethereum_utils.credential_contract')
+    def test_verify_credential(self, mock_contract):
+        mock_contract.functions.verifyCredential.return_value.call.return_value = (True, "QmTestHash")
+        is_verified, ipfs_hash = verify_credential(self.credential.credential_id)
+        self.assertTrue(is_verified)
+        self.assertEqual(ipfs_hash, "QmTestHash")
+
+    @patch('blockchain.ethereum_utils.w3')
+    def test_network_error(self, mock_w3):
+        mock_w3.eth.send_raw_transaction.side_effect = Exception("Network error")
+        with self.assertRaises(Exception):
+            issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id).hex(), self.credential.ipfs_hash)
+
+    @patch('blockchain.ethereum_utils.credential_contract')
     def test_invalid_credential(self, mock_contract):
-        mock_contract.functions.verifyCredential.return_value.call.return_value = False
-        result = verify_credential("INVALID123")
-        self.assertFalse(result)
+        mock_contract.functions.verifyCredential.return_value.call.return_value = (False, "")
+        is_verified, ipfs_hash = verify_credential("INVALID123")
+        self.assertFalse(is_verified)
+        self.assertEqual(ipfs_hash, "")
 
     @patch('blockchain.ethereum_utils.w3')
     def test_gas_price_fluctuation(self, mock_w3):
@@ -63,14 +57,12 @@ class BlockchainTest(TestCase):
         mock_w3.eth.get_transaction_count.return_value = 0
         mock_w3.eth.send_raw_transaction.return_value = b'test_hash'
         mock_w3.eth.wait_for_transaction_receipt.return_value = {'status': 1}
-        mock_w3.eth.get_transaction_count.return_value = 0
-        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
+        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id).hex(), self.credential.ipfs_hash)
         self.assertEqual(result['status'], 1)
 
         # Simulate gas price increase
         mock_w3.eth.gas_price = 50000000000  # 50 Gwei
-
-        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
+        result = issue_credential(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id).hex(), self.credential.ipfs_hash)
         self.assertEqual(result['status'], 1)
 
     @patch('blockchain.ethereum_utils.w3')
@@ -99,7 +91,7 @@ class BlockchainTest(TestCase):
         mock_w3.eth.send_raw_transaction.return_value = b'test_hash'
         mock_w3.eth.wait_for_transaction_receipt.return_value = {'status': 1}
         
-        result = issue_credential_with_retry(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
+        result = issue_credential_with_retry(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id).hex(), self.credential.ipfs_hash)
         self.assertEqual(result['status'], 1)
 
     @patch('blockchain.ethereum_utils.verify_credential')
