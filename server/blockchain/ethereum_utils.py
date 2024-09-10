@@ -42,8 +42,8 @@ def issue_credential(credential_id, hash_value):
         account = w3.eth.account.from_key(os.getenv('PRIVATE_KEY'))
         nonce = w3.eth.get_transaction_count(account.address)
         
-        txn = credential_contract.functions.issueCredential(credential_id, hash_value).build_transaction({
-            'chainId': chain_id,  # Mainnet
+        txn = credential_contract.functions.issueCredential(credential_id, hash_value, ipfs_hash).build_transaction({
+            'chainId': chain_id,
             'gas': 2000000,
             'gasPrice': estimate_gas_price(),
             'nonce': nonce,
@@ -64,12 +64,12 @@ def verify_credential(credential_id):
     """
     try:
         print(f"Attempting to verify credential with ID: {credential_id}")
-        result = credential_contract.functions.verifyCredential(credential_id).call()
-        print(f"Verification result for credential {credential_id}: {result}")
-        return result
+        is_verified, ipfs_hash = credential_contract.functions.verifyCredential(credential_id).call()
+        print(f"Verification result for credential {credential_id}: {is_verified}")
+        return is_verified, ipfs_hash
     except Exception as e:
         print(f"Error verifying credential {credential_id}: {str(e)}")
-        return False
+        return False, ""
 
 def get_contract():
     """

@@ -10,7 +10,7 @@ def add_to_ipfs(data):
     """
     Add to IPFS
     """
-    client = connet_to_ipfs()
+    client = connect_to_ipfs()
     res = client.add_json(data)
     return res
 
