@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createCredential, verifyCredential, getCredentials } from '../api/api';
+import BlockchainInfo from './BlockchainInfo';
 
 function Dashboard({ user }) {
   const [credentials, setCredentials] = useState([]);
@@ -87,6 +88,7 @@ function Dashboard({ user }) {
           </li>
         ))}
       </ul>
+      <BlockchainInfo />
     </div>
   );
 }
