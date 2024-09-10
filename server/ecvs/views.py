@@ -7,13 +7,14 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import Http404
 from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth.hashers import check_password
 from .models import Credential, Wallet, User
 from .serializers import CredentialSerializer, WalletSerializer, UserSerializer
 from rest_framework.permissions import AllowAny
 from blockchain.ethereum_utils import issue_credential, verify_credential
 import hashlib
 import json
-from blockchain.ipfs_utils import connect_to_ipfs
+
 
 logger = logging.getLogger(__name__)
 
@@ -33,10 +34,6 @@ class CredentialViewSet(viewsets.ModelViewSet):
         Create a new credential.
         """
         try:
-            ipfs_client = connect_to_ipfs()
-            if not ipfs_client:
-                return Response({"error": "IPFS connection failed"}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-            
             serializer = self.get_serializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
@@ -72,7 +69,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
         hash_value = hashlib.sha256(f"{credential.degree}{credential.institution}{credential.date_issued}{credential.credential_id}".encode()).hexdigest()
         # Issue the credential on the blockchain
         try:
-            issue_credential(credential.credential_id, hash_value, credential.ipfs_hash)
+            issue_credential(credential.credential_id, hash_value)
         except Exception as e:
             logger.error(f"Error issuing credential: {str(e)}")
             # Handle the error appropriately
@@ -84,8 +81,8 @@ class CredentialViewSet(viewsets.ModelViewSet):
         """
         try:
             credential = self.get_object()
-            is_verified, ipfs_hash = verify_credential(credential.credential_id)
-            return Response({'is_verified': is_verified, 'ipfs_hash': ipfs_hash})
+            is_verified = verify_credential(credential.credential_id)
+            return Response({'is_verified': is_verified})
         except Http404:
             return Response({"error": "Credential not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
@@ -139,12 +136,39 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'])
     def login(self, request):
+        print("Login request data:", request.data)
         username = request.data.get('username')
         password = request.data.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
-            return Response(UserSerializer(user).data)
-        return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+        if not username or not password:
+            return Response({"error": "Both username and password are required"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        User = get_user_model()
+        try:
+            user = User.objects.get(username=username)
+            print(f"User found: {user}")
+            print(f"Stored password hash: {user.password}")
+            print(f"Raw password: {password}")
+            print(f"Password check result: {check_password(password, user.password)}")
+            
+            # Additional checks
+            from django.contrib.auth.hashers import make_password
+            print(f"New hash of provided password: {make_password(password)}")
+            print(f"Direct comparison: {user.password == make_password(password)}")
+        except User.DoesNotExist:
+            print(f"User with username {username} does not exist")
+            return Response({"error": "User does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+        auth_user = authenticate(username=username, password=password)
+        if auth_user:
+            print("Authentication successful")
+            return Response(UserSerializer(auth_user).data)
+        else:
+            print("Authentication failed")
+            if user.check_password(password):
+                print("Password is correct, but authentication failed")
+            else:
+                print("Password is incorrect")
+            return Response({"error": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=['post'])
     def register(self, request):
@@ -165,5 +189,9 @@ def register_user(request):
             password=serializer.validated_data['password'],
             role=serializer.validated_data['role']
         )
+        print(f"User created: {user.username}")
+        print(f"Password hash after creation: {user.password}")
+        print(f"Password check immediately after creation: {user.check_password(serializer.validated_data['password'])}")
+        
         return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -1,0 +1,121 @@
+INFO 2024-09-10 17:39:02,819 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 17:41:07,416 log Not Found: /users/register/
+WARNING 2024-09-10 17:41:07,416 basehttp "POST /users/register/ HTTP/1.1" 404 2368
+INFO 2024-09-10 17:41:28,580 basehttp "POST /api/users/register/ HTTP/1.1" 201 92
+WARNING 2024-09-10 17:42:09,430 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:42:09,438 basehttp "POST /api/users/login/ HTTP/1.1" 400 31
+INFO 2024-09-10 17:44:33,083 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\server\settings.py changed, reloading.
+INFO 2024-09-10 17:44:38,724 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 17:44:46,655 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:44:46,664 basehttp "POST /api/users/login/ HTTP/1.1" 400 31
+INFO 2024-09-10 17:46:17,648 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:46:27,050 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 17:46:55,838 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:47:06,118 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 17:47:13,236 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:47:13,236 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+WARNING 2024-09-10 17:47:48,314 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:47:48,314 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 17:48:27,304 basehttp "POST /api/users/register/ HTTP/1.1" 201 86
+WARNING 2024-09-10 17:48:54,589 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:48:54,589 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 17:51:13,505 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:51:19,874 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 17:51:26,495 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:51:31,712 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 17:51:41,134 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:51:47,049 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 17:51:55,728 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:51:55,736 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 17:53:50,568 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:53:55,675 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 17:55:32,465 basehttp "POST /api/users/register/ HTTP/1.1" 201 84
+WARNING 2024-09-10 17:55:48,811 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:55:48,811 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 17:56:57,138 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:57:03,734 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 17:57:29,638 basehttp "POST /api/users/register/ HTTP/1.1" 201 80
+WARNING 2024-09-10 17:57:47,317 log Bad Request: /api/users/login/
+WARNING 2024-09-10 17:57:47,317 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 17:59:33,924 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 17:59:40,229 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:00:07,182 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:00:12,221 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 18:00:31,316 log Bad Request: /api/users/login/
+WARNING 2024-09-10 18:00:31,316 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 18:01:57,520 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:02:02,863 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:02:37,607 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-10 18:02:44,900 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 18:03:01,313 log Bad Request: /api/users/login/
+WARNING 2024-09-10 18:03:01,321 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 18:03:11,770 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-10 18:03:16,553 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:04:06,394 basehttp "POST /api/users/register/ HTTP/1.1" 201 88
+WARNING 2024-09-10 18:04:28,399 log Bad Request: /api/users/login/
+WARNING 2024-09-10 18:04:28,407 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 18:08:05,938 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:08:10,501 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:09:53,777 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:09:58,599 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:10:04,376 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:10:08,792 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:10:57,195 basehttp "POST /api/users/register/ HTTP/1.1" 201 90
+WARNING 2024-09-10 18:11:15,511 log Bad Request: /api/users/login/
+WARNING 2024-09-10 18:11:15,511 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+INFO 2024-09-10 18:13:03,296 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:13:06,856 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:13:34,392 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\serializers.py changed, reloading.
+INFO 2024-09-10 18:13:40,421 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:14:07,528 basehttp "POST /api/users/register/ HTTP/1.1" 201 86
+WARNING 2024-09-10 18:14:22,596 log Bad Request: /api/users/login/
+WARNING 2024-09-10 18:14:22,597 basehttp "POST /api/users/login/ HTTP/1.1" 400 28
+ERROR 2024-09-10 18:21:01,958 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 18:21:01,959 basehttp "POST /api/credentials/ HTTP/1.1" 500 86
+INFO 2024-09-10 18:23:36,072 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:23:40,110 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:24:04,578 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:24:08,026 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 18:24:33,285 log Service Unavailable: /api/credentials/
+ERROR 2024-09-10 18:24:33,287 basehttp "POST /api/credentials/ HTTP/1.1" 503 34
+INFO 2024-09-10 18:25:43,219 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:25:47,273 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:26:51,983 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:27:47,982 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:27:52,270 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:28:09,548 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:28:13,937 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 18:28:17,959 log Service Unavailable: /api/credentials/
+ERROR 2024-09-10 18:28:17,962 basehttp "POST /api/credentials/ HTTP/1.1" 503 34
+INFO 2024-09-10 18:29:50,812 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:29:54,646 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:30:07,534 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:30:10,884 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:30:14,788 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:30:18,200 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 18:30:31,490 log Service Unavailable: /api/credentials/
+ERROR 2024-09-10 18:30:31,491 basehttp "POST /api/credentials/ HTTP/1.1" 503 34
+INFO 2024-09-10 18:30:58,976 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:31:02,107 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 18:31:07,108 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 18:31:07,110 basehttp "POST /api/credentials/ HTTP/1.1" 500 86
+INFO 2024-09-10 18:32:36,295 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:32:40,087 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:32:52,117 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:32:55,886 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 18:33:05,723 log Service Unavailable: /api/credentials/
+ERROR 2024-09-10 18:33:05,724 basehttp "POST /api/credentials/ HTTP/1.1" 503 34
+INFO 2024-09-10 18:36:54,175 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ipfs_utils.py changed, reloading.
+INFO 2024-09-10 18:36:59,232 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 18:37:10,158 log Service Unavailable: /api/credentials/
+ERROR 2024-09-10 18:37:10,160 basehttp "POST /api/credentials/ HTTP/1.1" 503 34
+INFO 2024-09-10 18:38:41,832 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:38:45,743 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:43:57,029 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 18:44:03,902 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:44:40,805 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 18:44:50,598 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:44:53,731 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 18:44:59,092 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 18:46:17,131 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 18:46:22,980 autoreload Watching for file changes with StatReloader

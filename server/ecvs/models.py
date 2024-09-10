@@ -55,18 +55,8 @@ class Credential(models.Model):
         super().save(*args, **kwargs)
 
     def verify(self):
-        is_verified, ipfs_hash = verify_credential(self.credential_id)
+        is_verified = verify_credential(self.credential_id)
         self.is_verified = is_verified
-        if is_verified and ipfs_hash:
-            ipfs_data = get_from_ipfs(ipfs_hash)
-            # Verify IPFS data matches the stored data
-            if (ipfs_data['degree'] == self.degree and
-                ipfs_data['institution'] == self.institution and
-                ipfs_data['date_issued'] == str(self.date_issued) and
-                ipfs_data['credential_id'] == self.credential_id):
-                self.is_verified = True
-            else:
-                self.is_verified = False
         self.save()
         return self.is_verified
 

@@ -8,7 +8,7 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 load_dotenv()
 
 # Connect to the Ethereum network
-w3 = Web3(Web3.HTTPProvider(os.getenv('ETHEREUM_NODE_URL')))
+w3 = Web3(Web3.HTTPProvider(f"https://sepolia.infura.io/v3/{os.getenv('INFURA_PROJECT_ID')}"))
 
 # Check if the connection is successful
 if not w3.is_connected():
@@ -25,7 +25,7 @@ with open(contract_path) as f:
 contract_abi = contract_json['abi']
 contract_address = os.getenv('CONTRACT_ADDRESS')
 
-# Create cotract instance
+# Create contract instance
 credential_contract = w3.eth.contract(address=contract_address, abi=contract_abi)
 
 def estimate_gas_price():
@@ -34,7 +34,7 @@ def estimate_gas_price():
     """
     return w3.eth.gas_price
 
-def issue_credential(credential_id, hash_value, ipfs_hash):
+def issue_credential(credential_id, hash_value):
     """
     Issue a credential on the blockchain
     """
@@ -42,7 +42,7 @@ def issue_credential(credential_id, hash_value, ipfs_hash):
         account = w3.eth.account.from_key(os.getenv('PRIVATE_KEY'))
         nonce = w3.eth.get_transaction_count(account.address)
         
-        txn = credential_contract.functions.issueCredential(credential_id, hash_value, ipfs_hash).build_transaction({
+        txn = credential_contract.functions.issueCredential(credential_id, hash_value).build_transaction({
             'chainId': chain_id,
             'gas': 2000000,
             'gasPrice': estimate_gas_price(),
@@ -64,12 +64,12 @@ def verify_credential(credential_id):
     """
     try:
         print(f"Attempting to verify credential with ID: {credential_id}")
-        is_verified, ipfs_hash = credential_contract.functions.verifyCredential(credential_id).call()
+        is_verified = credential_contract.functions.verifyCredential(credential_id).call()
         print(f"Verification result for credential {credential_id}: {is_verified}")
-        return is_verified, ipfs_hash
+        return is_verified
     except Exception as e:
         print(f"Error verifying credential {credential_id}: {str(e)}")
-        return False, ""
+        return False
 
 def get_contract():
     """
@@ -81,8 +81,8 @@ def get_contract():
     return contract
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
-def issue_credential_with_retry(credential_id, hash_value, ipfs_hash):
-    return issue_credential(credential_id, hash_value, ipfs_hash)
+def issue_credential_with_retry(credential_id, hash_value):
+    return issue_credential(credential_id, hash_value)
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
 def verify_credential_with_retry(credential_id):
