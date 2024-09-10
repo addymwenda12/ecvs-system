@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'ecvs',
     'blockchain',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -169,3 +171,5 @@ LOGGING = {
 AUTH_USER_MODEL = 'ecvs.User'
 
 ENCRYPTION_KEY = os.environ.get('ENCRYPTION_KEY', Fernet.generate_key())
+
+CORS_ALLOW_ALL_ORIGINS = True

@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from ecvs.views import UserViewSet, CredentialViewSet
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'credentials', CredentialViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('ecvs.urls')),
+    path('api/', include(router.urls)),
 ]

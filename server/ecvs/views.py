@@ -1,14 +1,16 @@
 import logging
 from rest_framework import viewsets, status, serializers
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import Http404
-from .models import Credential, Wallet
-from .serializers import CredentialSerializer, WalletSerializer
-from blockchain.ethereum_utils import issue_credential
+from django.contrib.auth import authenticate, get_user_model
+from .models import Credential, Wallet, User
+from .serializers import CredentialSerializer, WalletSerializer, UserSerializer
+from rest_framework.permissions import AllowAny
+from blockchain.ethereum_utils import issue_credential, verify_credential
 import hashlib
 import json
 from blockchain.ipfs_utils import connect_to_ipfs
@@ -78,7 +80,7 @@ class CredentialViewSet(viewsets.ModelViewSet):
         """
         try:
             credential = self.get_object()
-            is_verified = credential.verify()
+            is_verified = verify_credential(credential.credential_id)
             return Response({'is_verified': is_verified})
         except Http404:
             return Response({"error": "Credential not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -126,3 +128,38 @@ class WalletView(APIView):
         wallet.update_balance()
         serializer = WalletSerializer(wallet)
         return Response(serializer.data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    @action(detail=False, methods=['post'])
+    def login(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            return Response(UserSerializer(user).data)
+        return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=False, methods=['post'])
+    def register(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def register_user(request):
+    User = get_user_model()
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        user = User.objects.create_user(
+            username=serializer.validated_data['username'],
+            password=serializer.validated_data['password'],
+            role=serializer.validated_data['role']
+        )
+        return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
