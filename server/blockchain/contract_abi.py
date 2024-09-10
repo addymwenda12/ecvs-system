@@ -1,39 +1,10 @@
-CONTRACT_ABI = [
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "credentialId",
-          "type": "string"
-        },
-        {
-          "internalType": "bytes32",
-          "name": "hashValue",
-          "type": "bytes32"
-        }
-      ],
-      "name": "issueCredential",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "credentialId",
-          "type": "string"
-        }
-      ],
-      "name": "verifyCredential",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }
-]
+import json
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+contract_path = os.path.join(current_dir, '..', 'build', 'contracts', 'CredentialContract.json')
+
+with open(contract_path) as f:
+    contract_json = json.load(f)
+
+CONTRACT_ABI = contract_json['abi']

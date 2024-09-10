@@ -87,3 +87,21 @@ class BlockchainTest(TestCase):
         self.assertNotEqual(self.wallet.encrypted_private_key, test_private_key)
         decrypted_key = self.wallet.get_private_key()
         self.assertEqual(decrypted_key, test_private_key)
+
+    @patch('blockchain.ethereum_utils.w3')
+    def test_issue_credential_with_retry(self, mock_w3):
+        mock_w3.eth.account.from_key.return_value = MagicMock()
+        mock_w3.eth.get_transaction_count.return_value = 0
+        mock_w3.eth.send_raw_transaction.return_value = b'test_hash'
+        mock_w3.eth.wait_for_transaction_receipt.return_value = {'status': 1}
+        
+        result = issue_credential_with_retry(self.credential.credential_id, Web3.keccak(text=self.credential.credential_id))
+        self.assertEqual(result['status'], 1)
+
+    @patch('blockchain.ethereum_utils.verify_credential')
+    def test_verify_credential_with_retry(self, mock_verify):
+        mock_verify.return_value = (True, 'test_ipfs_hash')
+        
+        is_verified, ipfs_hash = verify_credential_with_retry(self.credential.credential_id)
+        self.assertTrue(is_verified)
+        self.assertEqual(ipfs_hash, 'test_ipfs_hash')
