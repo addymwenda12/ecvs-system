@@ -190,3 +190,343 @@ INFO 2024-09-10 22:53:06,506 views Login attempt for user: Jacinta
 INFO 2024-09-10 22:53:07,640 basehttp "POST /api/login/ HTTP/1.1" 200 71
 INFO 2024-09-10 22:53:27,162 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
 INFO 2024-09-10 22:53:34,487 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 22:53:38,069 views Login attempt for user: Jacinta
+INFO 2024-09-10 22:53:39,388 basehttp "POST /api/login/ HTTP/1.1" 200 71
+INFO 2024-09-10 22:54:22,656 basehttp "POST /api/register/ HTTP/1.1" 201 70
+INFO 2024-09-10 22:54:33,156 views Login attempt for user: Test4
+INFO 2024-09-10 22:54:34,632 basehttp "POST /api/login/ HTTP/1.1" 200 70
+INFO 2024-09-10 23:00:30,895 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:00:37,505 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:01:35,036 views Login attempt for user: Test4
+ERROR 2024-09-10 23:01:36,169 log Internal Server Error: /api/login/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py", line 148, in login
+    token, created = Token.objects.get_or_create(user=user)
+                     ^^^^^^^^^^^^^
+AttributeError: type object 'Token' has no attribute 'objects'
+ERROR 2024-09-10 23:01:36,188 basehttp "POST /api/login/ HTTP/1.1" 500 97605
+INFO 2024-09-10 23:02:57,784 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:03:03,562 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:03:21,647 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\server\settings.py changed, reloading.
+INFO 2024-09-10 23:03:27,404 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:03:33,906 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:03:39,952 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:04:41,809 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:04:47,391 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:04:52,146 views Login attempt for user: Test4
+INFO 2024-09-10 23:04:53,689 basehttp "POST /api/login/ HTTP/1.1" 200 126
+ERROR 2024-09-10 23:06:11,564 views Error creating credential: NOT NULL constraint failed: ecvs_credential.ipfs_hash
+ERROR 2024-09-10 23:06:11,566 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 23:06:11,567 basehttp "POST /api/credentials/ HTTP/1.1" 500 65
+INFO 2024-09-10 23:10:37,488 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:10:44,530 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:11:13,617 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:11:20,417 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:12:22,749 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\models.py changed, reloading.
+INFO 2024-09-10 23:12:28,518 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 23:13:21,981 views Unexpected error creating credential: Field name `created_at` is not valid for model `Credential` in `ecvs.serializers.CredentialSerializer`.
+ERROR 2024-09-10 23:13:21,982 log Internal Server Error: /api/credentials/
+ERROR 2024-09-10 23:13:21,983 basehttp "POST /api/credentials/ HTTP/1.1" 500 71
+INFO 2024-09-10 23:15:29,386 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\models.py changed, reloading.
+INFO 2024-09-10 23:15:34,875 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:17:17,624 basehttp "POST /api/credentials/ HTTP/1.1" 201 116
+INFO 2024-09-10 23:18:39,966 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:18:46,040 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:19:07,545 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:19:13,353 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:19:21,759 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:19:28,062 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 23:19:31,558 views Validation error creating credential: {'credential_id': [ErrorDetail(string='credential with this credential id already exists.', code='unique')]}
+WARNING 2024-09-10 23:19:31,559 log Bad Request: /api/credentials/
+WARNING 2024-09-10 23:19:31,560 basehttp "POST /api/credentials/ HTTP/1.1" 400 120
+ERROR 2024-09-10 23:19:56,778 views Error issuing credential: Error issuing credential 456789: {'message': 'from not found; is required', 'stack': 'Error: from not found; is required\n    at EthereumApi.eth_sendTransaction (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:64477)\n    at n.value (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:159715)\n    at Object.execute (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:289971)\n    at RequestCoordinator.<anonymous> (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:289785)\n    at C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:290051\n    at new Promise (<anonymous>)\n    at RequestCoordinator.queue (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:289893)\n    at Executor.execute (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:284503)\n    at EthereumProvider._requestRaw (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:183646)\n    at Connector.<anonymous> (C:\\Users\\HP\\AppData\\Roaming\\npm\\node_modules\\ganache\\dist\\node\\1.js:2:104158)', 'code': -32700}
+WARNING 2024-09-10 23:19:56,787 views Credential created but not verified on blockchain: 456789
+INFO 2024-09-10 23:19:56,790 basehttp "POST /api/credentials/ HTTP/1.1" 201 117
+INFO 2024-09-10 23:22:25,739 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:22:32,198 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:22:42,539 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:22:49,815 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:23:07,423 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-10 23:23:12,709 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 23:23:32,475 views Error issuing credential: 'Contract' object has no attribute 'web3'
+WARNING 2024-09-10 23:23:32,475 views Credential created but not verified on blockchain: 9876293
+INFO 2024-09-10 23:23:32,477 basehttp "POST /api/credentials/ HTTP/1.1" 201 117
+INFO 2024-09-10 23:25:29,262 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:25:37,640 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 23:26:05,152 views Validation error creating credential: {'credential_id': [ErrorDetail(string='credential with this credential id already exists.', code='unique')]}
+WARNING 2024-09-10 23:26:05,154 log Bad Request: /api/credentials/
+WARNING 2024-09-10 23:26:05,155 basehttp "POST /api/credentials/ HTTP/1.1" 400 120
+ERROR 2024-09-10 23:26:19,629 views Error issuing credential: Error issuing credential 57488393: from field must match key's 0x4A2554bbB352E494A851Aa94B21ce82B8c693Cc0, but it was 0xF6b807bCe0091d9048eCFEDF23684F693Fc6DAa8
+WARNING 2024-09-10 23:26:19,630 views Credential created but not verified on blockchain: 57488393
+INFO 2024-09-10 23:26:19,631 basehttp "POST /api/credentials/ HTTP/1.1" 201 117
+INFO 2024-09-10 23:28:51,763 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:28:57,672 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:29:16,336 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:29:21,924 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:33:54,637 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:34:00,519 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:34:48,868 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:35:01,328 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:36:16,508 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:36:21,678 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:36:36,296 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:36:41,436 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:36:49,718 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:36:54,914 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 23:52:37,641 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-10 23:52:44,506 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-10 23:58:26,744 views Validation error creating credential: {'credential_id': [ErrorDetail(string='credential with this credential id already exists.', code='unique')]}
+WARNING 2024-09-10 23:58:26,745 log Bad Request: /api/credentials/
+WARNING 2024-09-10 23:58:26,746 basehttp "POST /api/credentials/ HTTP/1.1" 400 120
+ERROR 2024-09-10 23:59:34,357 views Error issuing credential: Error issuing credential 00927281: Address None must be provided as a string
+WARNING 2024-09-10 23:59:34,364 views Credential created but not verified on blockchain: 00927281
+INFO 2024-09-10 23:59:34,366 basehttp "POST /api/credentials/ HTTP/1.1" 201 117
+INFO 2024-09-11 00:00:13,158 basehttp "GET /api/credentials/ HTTP/1.1" 200 824
+INFO 2024-09-11 00:00:26,008 basehttp "GET /api/credentials/1/ HTTP/1.1" 200 115
+WARNING 2024-09-11 00:00:39,882 log Not Found: /api/credentials/1/VERIFY/
+WARNING 2024-09-11 00:00:39,883 basehttp "GET /api/credentials/1/VERIFY/ HTTP/1.1" 404 17072
+WARNING 2024-09-11 00:00:45,597 log Method Not Allowed: /api/credentials/1/verify/
+WARNING 2024-09-11 00:00:45,598 basehttp "GET /api/credentials/1/verify/ HTTP/1.1" 405 40
+INFO 2024-09-11 00:00:58,216 basehttp "POST /api/credentials/1/verify/ HTTP/1.1" 200 21
+INFO 2024-09-11 00:03:06,146 basehttp "POST /api/credentials/1/verify/ HTTP/1.1" 200 21
+INFO 2024-09-11 00:03:25,257 basehttp "POST /api/credentials/1/verify/ HTTP/1.1" 200 21
+INFO 2024-09-11 00:04:13,651 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-11 00:04:19,503 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:04:27,076 basehttp "POST /api/credentials/1/verify/ HTTP/1.1" 200 21
+INFO 2024-09-11 00:05:45,628 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-11 00:05:50,033 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:06:41,683 basehttp "POST /api/credentials/1/verify/ HTTP/1.1" 200 21
+INFO 2024-09-11 00:07:22,611 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-11 00:07:26,763 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:07:47,653 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\blockchain\ethereum_utils.py changed, reloading.
+INFO 2024-09-11 00:07:52,416 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:07:54,305 basehttp "POST /api/credentials/1/verify/ HTTP/1.1" 200 21
+WARNING 2024-09-11 00:09:10,632 log Not Found: /api/wallet/balance
+WARNING 2024-09-11 00:09:10,633 basehttp "GET /api/wallet/balance HTTP/1.1" 404 17051
+WARNING 2024-09-11 00:09:14,733 log Not Found: /api/wallet/balance/
+WARNING 2024-09-11 00:09:14,734 basehttp "GET /api/wallet/balance/ HTTP/1.1" 404 17054
+INFO 2024-09-11 00:11:01,792 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:11:07,123 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-11 00:11:42,370 log Not Found: /api/wallet/balance/
+WARNING 2024-09-11 00:11:42,371 basehttp "GET /api/wallet/balance/ HTTP/1.1" 404 17054
+INFO 2024-09-11 00:12:22,368 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\urls.py changed, reloading.
+INFO 2024-09-11 00:12:26,694 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:12:44,913 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\urls.py changed, reloading.
+INFO 2024-09-11 00:12:49,901 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-11 00:12:58,678 log Not Found: /api/wallet/balance/
+WARNING 2024-09-11 00:12:58,678 basehttp "GET /api/wallet/balance/ HTTP/1.1" 404 17054
+WARNING 2024-09-11 00:13:09,241 log Not Found: /api/wallet/generate/
+WARNING 2024-09-11 00:13:09,243 basehttp "POST /api/wallet/generate/ HTTP/1.1" 404 17058
+WARNING 2024-09-11 00:13:18,012 log Not Found: /wallet/generate/
+WARNING 2024-09-11 00:13:18,013 basehttp "POST /wallet/generate/ HTTP/1.1" 404 3622
+INFO 2024-09-11 00:15:58,505 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\urls.py changed, reloading.
+INFO 2024-09-11 00:16:05,185 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-11 00:16:35,527 log Not Found: /api/wallet/balance/
+WARNING 2024-09-11 00:16:35,528 basehttp "POST /api/wallet/balance/ HTTP/1.1" 404 16728
+INFO 2024-09-11 00:17:16,134 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:17:24,967 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:17:31,210 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:17:37,530 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:17:43,347 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:17:48,257 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:17:58,963 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:18:02,892 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:20:02,163 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:20:05,746 autoreload Watching for file changes with StatReloader
+INFO 2024-09-11 00:20:35,149 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\urls.py changed, reloading.
+INFO 2024-09-11 00:20:39,117 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-11 00:20:46,785 log Method Not Allowed: /api/wallet/balance/
+WARNING 2024-09-11 00:20:46,786 basehttp "POST /api/wallet/balance/ HTTP/1.1" 405 41
+WARNING 2024-09-11 00:20:54,253 log Method Not Allowed: /api/wallet/balance/
+WARNING 2024-09-11 00:20:54,254 basehttp "POST /api/wallet/balance/ HTTP/1.1" 405 41
+ERROR 2024-09-11 00:21:04,106 log Internal Server Error: /api/wallet/balance/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py", line 110, in balance
+    wallet = request.user.wallet
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'wallet'
+ERROR 2024-09-11 00:21:04,118 basehttp "GET /api/wallet/balance/ HTTP/1.1" 500 97781
+ERROR 2024-09-11 00:21:21,317 log Internal Server Error: /api/wallet/balance/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py", line 110, in balance
+    wallet = request.user.wallet
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'wallet'
+ERROR 2024-09-11 00:21:21,325 basehttp "GET /api/wallet/balance/ HTTP/1.1" 500 97781
+ERROR 2024-09-11 00:21:36,864 log Internal Server Error: /api/wallet/generate/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2123, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\contrib\auth\models.py", line 438, in __int__
+    raise TypeError(
+TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py", line 116, in generate
+    wallet, created = Wallet.objects.get_or_create(user=request.user)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\fields\related_lookups.py", line 156, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x000001820CD4A060>.
+ERROR 2024-09-11 00:21:36,888 basehttp "POST /api/wallet/generate/ HTTP/1.1" 500 170288
+INFO 2024-09-11 00:22:05,685 autoreload Watching for file changes with StatReloader
+ERROR 2024-09-11 00:22:19,363 log Internal Server Error: /api/wallet/balance/
+Traceback (most recent call last):
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py", line 110, in balance
+    wallet = request.user.wallet
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'wallet'
+ERROR 2024-09-11 00:22:19,386 basehttp "GET /api/wallet/balance/ HTTP/1.1" 500 97781
+INFO 2024-09-11 00:24:01,233 autoreload C:\Users\HP\Documents\myProjects\ethSafari\ecvs-system\server\ecvs\views.py changed, reloading.
+INFO 2024-09-11 00:24:06,337 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-11 00:24:19,338 log Forbidden: /api/wallet/balance/
+WARNING 2024-09-11 00:24:19,340 basehttp "GET /api/wallet/balance/ HTTP/1.1" 403 58
+WARNING 2024-09-11 00:25:07,171 log Forbidden: /api/wallet/balance/
+WARNING 2024-09-11 00:25:07,172 basehttp "GET /api/wallet/balance/ HTTP/1.1" 403 58

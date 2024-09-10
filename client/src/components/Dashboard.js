@@ -5,6 +5,7 @@ import { getCredentials } from '../api/api';
 import CredentialList from './CredentialList';
 import CredentialStats from './CredentialStats';
 import SearchBar from './SearchBar';
+import Wallet from './Wallet';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function Dashboard() {
   return (
     <div>
       <h2>Welcome, {currentUser.username}!</h2>
+      <Wallet />
       <SearchBar />
       <CredentialList credentials={credentials} />
       <CredentialStats credentials={credentials} />

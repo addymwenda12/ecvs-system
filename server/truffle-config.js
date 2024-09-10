@@ -65,8 +65,7 @@ module.exports = {
       confirmations: 2,
       timeoutBlocks: 200,
       skipDryRun: true,
-      networkCheckTimeout: 1000000,
-      timeoutBlocks: 500
+      networkCheckTimeout: 1000000
     },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.

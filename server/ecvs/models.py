@@ -24,35 +24,21 @@ class Credential(models.Model):
     """
     A credential represents a degree or certificate issued by an institution.
     """
-    degree = models.CharField(max_length=255)
-    institution = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='credentials')
+    degree = models.CharField(max_length=200)
+    institution = models.CharField(max_length=200)
     date_issued = models.DateField()
     credential_id = models.CharField(max_length=100, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='credentials')
     is_verified = models.BooleanField(default=False)
-    ipfs_hash = models.CharField(max_length=100, blank=True)
-    private_data = models.JSONField(default=dict, blank=True)
     public_data = models.JSONField(default=dict, blank=True)
+    private_data = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         """
         Return a string representation of the credential.
         """
-        return f"{self.degree} from {self.institution} ({self.date_issued})"
-
-    def save(self, *args, **kwargs):
-        if not self.ipfs_hash:
-            credential_data = {
-                'public': self.public_data,
-                'private': self.private_data,
-                'degree': self.degree,
-                'institution': self.institution,
-                'date_issued': str(self.date_issued),
-                'credential_id': self.credential_id,
-            }
-            self.ipfs_hash = add_to_ipfs(json.dumps(credential_data))
-        super().save(*args, **kwargs)
+        return f"{self.degree} from {self.institution}"
 
     def verify(self):
         is_verified = verify_credential(self.credential_id)

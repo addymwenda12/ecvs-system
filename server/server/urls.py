@@ -25,6 +25,6 @@ router.register(r'credentials', CredentialViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ecvs.urls')),
+    path('api/', include('ecvs.urls')),
     path('api/', include(router.urls)),
 ]

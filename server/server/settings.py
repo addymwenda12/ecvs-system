@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ecvs',
     'blockchain',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
