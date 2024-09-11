@@ -76,6 +76,22 @@ class Credential(models.Model):
         from blockchain.verifiable_credential import VerifiableCredential
         return VerifiableCredential(self).to_json()
 
+    @classmethod
+    def verify_by_id_or_institution(cls, identifier):
+        """
+        Verify a credential by its ID or institution name.
+        """
+        credential = cls.objects.filter(
+            models.Q(credential_id=identifier) | models.Q(institution__iexact=identifier)
+        ).first()
+
+        if credential:
+            is_verified = verify_credential(credential.credential_id)
+            credential.is_verified = is_verified
+            credential.save()
+            return credential, is_verified
+        return None, False
+
 class Wallet(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wallet')
     address = models.CharField(max_length=42, unique=True)

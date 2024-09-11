@@ -530,3 +530,4 @@ WARNING 2024-09-11 00:24:19,338 log Forbidden: /api/wallet/balance/
 WARNING 2024-09-11 00:24:19,340 basehttp "GET /api/wallet/balance/ HTTP/1.1" 403 58
 WARNING 2024-09-11 00:25:07,171 log Forbidden: /api/wallet/balance/
 WARNING 2024-09-11 00:25:07,172 basehttp "GET /api/wallet/balance/ HTTP/1.1" 403 58
+INFO 2024-09-11 13:12:18,430 autoreload Watching for file changes with StatReloader

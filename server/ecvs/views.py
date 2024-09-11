@@ -101,6 +101,25 @@ class CredentialViewSet(viewsets.ModelViewSet):
             logger.error(f"Error deleting credential: {str(e)}")
             return Response({"error": "An error occurred while deleting the credential."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @action(detail=False, methods=['post'])
+    def scan_verify(self, request):
+        """
+        Scan and verify a credential by ID or institution name.
+        """
+        identifier = request.data.get('identifier')
+        if not identifier:
+            return Response({"error": "Identifier is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        credential, is_verified = Credential.verify_by_id_or_institution(identifier)
+        if credential:
+            serializer = self.get_serializer(credential)
+            return Response({
+                'credential': serializer.data,
+                'is_verified': is_verified
+            })
+        else:
+            return Response({"error": "Credential or institution not found"}, status=status.HTTP_404_NOT_FOUND)
+
 class WalletViewSet(viewsets.ModelViewSet):
     queryset = Wallet.objects.all()
     serializer_class = WalletSerializer
